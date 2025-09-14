@@ -1,0 +1,102 @@
+/* ✅ Global Admin Red Theme */
+:root {
+    --primary: #c32027;   /* main red */
+    --secondary: #c96065; /* keep default gray-blue for contrast */
+    --link-fg: #c32027;
+    --link-selected-fg: #c32027;
+}
+
+/* 🔴 Top header bar */
+#header {
+    background-color: #c32027 !important;
+    color: white !important;
+}
+#header a,
+#header h1 {
+    color: white !important;
+}
+
+/* 🔴 Filters sidebar */
+#changelist-filter h2,
+#changelist-filter li.selected a {
+    background-color: #c32027 !important;
+    color: white !important;
+}
+/* 🔴 App/module headings (Dashboard panels) */
+.module caption,
+#content h1,
+#content h2,
+#content h3 {
+    background-color: #c32027 !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+/* 🔴 Backend Login title */
+.backend-login-title h1 {
+    background-color: #c32027 !important;
+    color: white !important;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+/* 🔴 Buttons (Add, Save, Delete, Filter headers) */
+.submit-row input.default,
+.button,
+input[type=submit],
+input[type=button],
+a.button {
+    background-color: #c32027 !important;
+    border: 1px solid #c32027 !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+.submit-row input.default:hover,
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+a.button:hover {
+    background-color: #a81b21 !important;
+    border-color: #a81b21 !important;
+}
+
+
+/* ✅ Login page inputs */
+.login #content input[type="text"],
+.login #content input[type="password"] {
+    border: 2px solid #c32027 !important;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+/* 🔴 Focus effect on inputs */
+.login #content input[type="text"]:focus,
+.login #content input[type="password"]:focus {
+    outline: none !important;
+    border-color: #a81b21 !important;
+    box-shadow: 0 0 5px #c32027;
+}
+
+/* 🔴 Login button */
+.login #content input[type="submit"] {
+    background-color: #c32027 !important;
+    border: 2px solid #c32027 !important;
+    color: white !important;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.login #content input[type="submit"]:hover {
+    background-color: #a81b21 !important;
+    border-color: #a81b21 !important;
+}
+
+
+
+

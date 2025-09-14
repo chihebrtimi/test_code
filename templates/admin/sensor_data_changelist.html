@@ -1,0 +1,93 @@
+{% extends "admin/change_list.html" %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <style>
+    /* Make the red title stand on its own row */
+    .change-list #content h1 {
+      display: block;
+      width: 100%;
+      margin: 0 0 12px;
+    }
+
+    /* Our custom toolbar: on a new line, centered */
+    #content .export-toolbar {
+      clear: both;
+      width: 100%;
+      margin: 10px auto 18px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #content .export-toolbar ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      list-style: none;          /* no bullets */
+    }
+
+    #content .export-toolbar li {
+      list-style: none;          /* no bullets */
+    }
+
+    /* Kill admin's little separators/markers if any */
+    #content .export-toolbar li::marker { content: ''; }
+    #content .export-toolbar li::before {
+      content: none !important;
+      display: none !important;
+    }
+
+    /* Buttons: normal (not bold), consistent look */
+    #content .export-toolbar a.button,
+    #content .export-toolbar button.button {
+      background: #c32027;
+      color: #fff;
+      border-radius: 6px;
+      padding: 6px 12px;
+      line-height: 1;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 400 !important;   /* normal text */
+    }
+
+    #content .export-toolbar input[type="date"] {
+      height: 32px;
+      padding: 0 8px;
+    }
+
+    #content .export-toolbar form.custom-range {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      margin: 0;
+    }
+  </style>
+{% endblock %}
+
+{% block object-tools %}
+  <div class="export-toolbar">
+    <ul>
+      <li><a class="button" href="?export=week">EXPORT LAST WEEK</a></li>
+      <li><a class="button" href="?export=month">EXPORT LAST MONTH</a></li>
+      <li>
+        <form method="get" class="custom-range">
+          <input type="hidden" name="export" value="custom">
+          <input type="date" name="start_date">
+          <input type="date" name="end_date">
+          <button type="submit" class="button">Export Custom Range</button>
+        </form>
+      </li>
+      <li><a class="button" href="?export_all=1">EXPORT ALL</a></li>
+    </ul>
+  </div>
+
+  {{ block.super }}
+{% endblock %}
+
+{# Hide empty list message/pagination if there are no rows #}
+{% block pagination %}{% if cl.result_count > 0 %}{{ block.super }}{% endif %}{% endblock %}
+{% block result_list %}{% if cl.result_count > 0 %}{{ block.super }}{% endif %}{% endblock %}

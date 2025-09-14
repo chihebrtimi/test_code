@@ -1,0 +1,43 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content_title %}
+  <!-- Remove duplicate "Admin Dashboard" small header -->
+{% endblock %}
+
+{% block sidebar %}
+  <!-- Remove the "Recent actions" panel -->
+{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+    {% for app in app_list %}
+      <table class="module">
+        <tbody>
+          {% for model in app.models %}
+            <tr class="{% cycle 'row1' 'row2' %}">
+              <th scope="row">
+                {% if model.admin_url %}
+                  <a href="{{ model.admin_url }}">{{ model.name }}</a>
+                {% else %}
+                  {{ model.name }}
+                {% endif %}
+              </th>
+              <td class="actionlist">
+                {% if model.view_url %}
+                  <a href="{{ model.view_url }}">{% trans "View" %}</a>
+                {% endif %}
+                {% if model.add_url %}
+                  <a href="{{ model.add_url }}">{% trans "Add" %}</a>
+                {% endif %}
+                {% if model.change_url %}
+                  <a href="{{ model.change_url }}">{% trans "Change" %}</a>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endfor %}
+  </div>
+{% endblock %}
