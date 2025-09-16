@@ -40,7 +40,12 @@ def login_user(request):
     email = request.data.get("email", "").lower()
     password = request.data.get("password", "")
 
+    print("DEBUG: email =", email)
+    print("DEBUG: password =", password)
+
     user = authenticate(request, email=email, password=password)
+    print("DEBUG: user =", user)
+
     if user is not None:
         serializer = UserSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
