@@ -13,10 +13,26 @@ Security note:
 
 from pathlib import Path
 import socket
+from decouple import config
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure--0^!u%s4=_%j-bu3!e6e(#s@2^yjaf%er4pj&c&@_5d7(--39q'
+# SECURITY
+SECRET_KEY = config("SECRET_KEY")
+
+# DATABASE
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": config("DB_NAME"),
+        "USER": config("DB_USER"),
+        "PASSWORD": config("DB_PASSWORD"),
+        "HOST": config("DB_HOST", default="localhost"),
+        "PORT": config("DB_PORT", default="5432"),
+    }
+}
+
 
 DEBUG = True
 
@@ -80,16 +96,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'server_project.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myproject',
-        'USER': 'postgres',
-        'PASSWORD': '25630326',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
