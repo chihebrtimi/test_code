@@ -17,23 +17,6 @@ from decouple import config
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# SECURITY
-SECRET_KEY = config("SECRET_KEY")
-
-# DATABASE
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("DB_NAME"),
-        "USER": config("DB_USER"),
-        "PASSWORD": config("DB_PASSWORD"),
-        "HOST": config("DB_HOST", default="localhost"),
-        "PORT": config("DB_PORT", default="5432"),
-    }
-}
-
-
 DEBUG = True
 
 # ✅ Dynamically detect LAN IP and add it to ALLOWED_HOSTS
